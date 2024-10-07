@@ -44,6 +44,6 @@ for(subject in names(res_dri_ordered))
   p[[subject]]=graph(df=astringency,subject=subject)$p
 }
 library(gridExtra)
-grid.arrange(grobs=p[1:12],nrow=3)
+grid.arrange(grobs=p[1:4],nrow=2)
 ```
 
