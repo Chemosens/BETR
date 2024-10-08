@@ -4,6 +4,9 @@ This package aims to work with intensities and BET.
 
 ## Installation
 ```R
+## install devtools
+if (!requireNamespace("devtools", quietly = TRUE)) {    install.packages("devtools") }
+## Install BETR
 library(devtools)
 install_github("https://github.com/ChemoSens/BETR")
 ```
