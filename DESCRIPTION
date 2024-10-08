@@ -1,0 +1,13 @@
+Package: BETR
+Type: Package
+Title: Tools for analyzing data from successive AFC tests
+Version: 0.1
+Date: 2023-07-04
+Author: Caroline Peltier
+Maintainer: Caroline Peltier <caroline.peltier@inrae.fr>
+Description: Tools for analyzing data from successive AFC tests. AFC are alternative forced choices tests.
+License: GPL-3
+Depends: R (>= 4.0.1)
+RoxygenNote: 7.3.2
+Encoding: UTF-8
+Imports: forcats, ggplot2
