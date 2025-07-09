@@ -28,20 +28,33 @@ ibt=function(df, minConc=NULL,maxConc=NULL)
   J=length(decreasingConcentrations)
   for(subject in subjects)
   {
+    print(subject)
     intensityDatai=df[df[,"subject"]==subject,]
     scores=intensityDatai[,"intensity"]
     scores=as.numeric(scores)
     names(scores)=as.character(round(intensityDatai[,"log_concentration"],digits=digits))
     reorderedScores=rev(scores[decreasingConcentrations])
     difference=diff(reorderedScores)
-    names(difference)=paste0(names(reorderedScores)[-1],"-",names(reorderedScores)[-length(reorderedScores)])
-    difference2=difference
-    difference2[difference2<=0]=NA
-    vec=cumsum_right(difference2)
-    ind=which.max(vec)[1]
-    thresholdIndex=ind
-    thresholdNum=thresholdToConcentration(thresholdIndex,decreasingNumConcentrations=decreasingNumConcentrations,minConc,maxConc)
-    threshold[subject]=thresholdNum
+    if(sd(scores)!=0)
+    {
+      names(difference)=paste0(names(reorderedScores)[-1],"-",names(reorderedScores)[-length(reorderedScores)])
+      difference2=difference
+      difference2[difference2<=0]=NA
+      if(all(is.na(difference2))){threshold[subject]=NA}
+      else
+      {
+        vec=cumsum_right(difference2)
+        ind=which.max(vec)[1]
+        thresholdIndex=ind
+        thresholdNum=thresholdToConcentration(thresholdIndex,decreasingNumConcentrations=decreasingNumConcentrations,minConc,maxConc)
+        threshold[subject]=thresholdNum
+      }
+
+    }
+    else
+    {
+      threshold[subject]=NA
+    }
   }
   return(threshold)
 }
