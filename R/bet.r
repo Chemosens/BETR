@@ -11,7 +11,7 @@
 #' 
 bet=function(df,minConc=0,maxConc=NULL)
 {
-  
+  df=as.data.frame(df)
   subjects=levels(factor(df[,"subject"]))
   threshold=rep(NA,length(subjects));names(threshold)=subjects
   logConc=unique(df[,"log_concentration"])

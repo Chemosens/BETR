@@ -9,6 +9,7 @@
 #' ibt(astringency)
 ibt=function(df, minConc=NULL,maxConc=NULL)
 {
+  df=as.data.frame(df)
   subjects=levels(factor(df[,"subject"]))
   threshold=rep(NA,length(subjects));names(threshold)=subjects
   logConc=unique(df[,"log_concentration"])
@@ -28,7 +29,6 @@ ibt=function(df, minConc=NULL,maxConc=NULL)
   J=length(decreasingConcentrations)
   for(subject in subjects)
   {
-    print(subject)
     intensityDatai=df[df[,"subject"]==subject,]
     scores=intensityDatai[,"intensity"]
     scores=as.numeric(scores)
