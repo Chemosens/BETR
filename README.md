@@ -9,6 +9,7 @@ if (!requireNamespace("devtools", quietly = TRUE)) {    install.packages("devtoo
 ## Install BETR
 library(devtools)
 install_github("https://github.com/ChemoSens/BETR")
+library(BETR)
 ```
 ## Example of usage
 
